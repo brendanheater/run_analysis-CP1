@@ -1,8 +1,8 @@
 run_analysis <- function(){
 
 ##  List of calls for 2 big dataframes, and column names    
-#    train_x    <- read.table("./UCI HAR Dataset/train/X_train.txt")
-#    test_x     <- read.table("./UCI HAR Dataset/test/X_test.txt")
+    train_x    <- read.table("./UCI HAR Dataset/train/X_train.txt")
+    test_x     <- read.table("./UCI HAR Dataset/test/X_test.txt")
     
     feat_name  <- read.table("./UCI HAR Dataset/features.txt")
     
@@ -14,7 +14,7 @@ run_analysis <- function(){
                           grepl("std()", names(features), fixed = TRUE)]  
     keep_n   <- names(features)  #store column names for later
     
-#    rm(list = c("train_x", "test_x", "feat_name"))
+    rm(list = c("train_x", "test_x", "feat_name"))
 
 ##  calls for smaller subject and activity datasets    
     train_subj <- read.table("./UCI HAR Dataset/train/subject_train.txt")
@@ -34,7 +34,7 @@ run_analysis <- function(){
 
     colnames(full) <- c("Subject", "Activity", keep_n)
 
-#    rm(list = setdiff(ls(), "full"))
+    rm(list = setdiff(ls(), "full"))
 
     tidyDS  <- aggregate(. ~ Subject+Activity, data = full, FUN = function(full) 
                          c(mn = mean(full, n = length(full))))
